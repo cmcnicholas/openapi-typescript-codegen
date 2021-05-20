@@ -1,6 +1,7 @@
 {{>header}}
 
-import type { Resolver, Headers } from './ApiRequestOptions';
+import type { ApiRequestOptions, Resolver, Headers, ErrorFactory } from './ApiRequestOptions';
+import type { ApiResult } from './ApiResult';
 
 export type ApiOptions = {
     baseUrl: string;
@@ -10,4 +11,7 @@ export type ApiOptions = {
     username?: string | Resolver<string>;
     password?: string | Resolver<string>;
     defaultHeaders?: Headers | Resolver<Headers>;
+    errorFactory?: ErrorFactory;
+    getResponseBody?: (options: ApiRequestOptions, response: Response) => Promise<any>;
+    catchErrors?: (options: ApiRequestOptions, result: ApiResult) => void;
 }

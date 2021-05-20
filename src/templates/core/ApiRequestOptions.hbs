@@ -1,8 +1,11 @@
 {{>header}}
 
 
+import type { ApiResult } from './ApiResult';
+
 export type Resolver<T> = (options: ApiRequestOptions) => Promise<T>;
 export type Headers = Record<string, string>;
+export type ErrorFactory = (message: string, options: ApiRequestOptions) => Error;
 
 export type ApiRequestOptions = {
     readonly baseUrl: string;
@@ -12,6 +15,9 @@ export type ApiRequestOptions = {
     readonly username?: string | Resolver<string>;
     readonly password?: string | Resolver<string>;
     readonly defaultHeaders?: Headers | Resolver<Headers>;
+    readonly errorFactory?: ErrorFactory;
+    readonly getResponseBody?: (options: ApiRequestOptions, response: Response) => Promise<any>;
+    readonly catchErrors?: (options: ApiRequestOptions, result: ApiResult) => void;
     readonly method: 'GET' | 'PUT' | 'POST' | 'DELETE' | 'OPTIONS' | 'HEAD' | 'PATCH';
     readonly path: string;
     readonly cookies?: Record<string, any>;

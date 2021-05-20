@@ -1,7 +1,6 @@
 import * as Handlebars from 'handlebars/runtime';
 
 import { HttpClient } from '../HttpClient';
-import templateCoreApiError from '../templates/core/ApiError.hbs';
 import templateCoreApiRequestOptions from '../templates/core/ApiRequestOptions.hbs';
 import templateCoreApiResult from '../templates/core/ApiResult.hbs';
 import fetchGetHeaders from '../templates/core/fetch/getHeaders.hbs';
@@ -21,6 +20,7 @@ import functionIsString from '../templates/core/functions/isString.hbs';
 import functionIsStringWithValue from '../templates/core/functions/isStringWithValue.hbs';
 import functionIsSuccess from '../templates/core/functions/isSuccess.hbs';
 import functionResolve from '../templates/core/functions/resolve.hbs';
+import functionCreateError from '../templates/core/functions/createError.hbs';
 import nodeGetHeaders from '../templates/core/node/getHeaders.hbs';
 import nodeGetRequestBody from '../templates/core/node/getRequestBody.hbs';
 import nodeGetResponseBody from '../templates/core/node/getResponseBody.hbs';
@@ -77,7 +77,6 @@ export interface Templates {
     };
     core: {
         settings: Handlebars.TemplateDelegate;
-        apiError: Handlebars.TemplateDelegate;
         apiRequestOptions: Handlebars.TemplateDelegate;
         apiResult: Handlebars.TemplateDelegate;
         request: Handlebars.TemplateDelegate;
@@ -101,7 +100,6 @@ export function registerHandlebarTemplates(root: { httpClient: HttpClient; useOp
         },
         core: {
             settings: Handlebars.template(templateCoreSettings),
-            apiError: Handlebars.template(templateCoreApiError),
             apiRequestOptions: Handlebars.template(templateCoreApiRequestOptions),
             apiResult: Handlebars.template(templateCoreApiResult),
             request: Handlebars.template(templateCoreRequest),
@@ -149,6 +147,7 @@ export function registerHandlebarTemplates(root: { httpClient: HttpClient; useOp
     Handlebars.registerPartial('functions/isStringWithValue', Handlebars.template(functionIsStringWithValue));
     Handlebars.registerPartial('functions/isSuccess', Handlebars.template(functionIsSuccess));
     Handlebars.registerPartial('functions/resolve', Handlebars.template(functionResolve));
+    Handlebars.registerPartial('functions/createError', Handlebars.template(functionCreateError));
 
     // Specific files for the fetch client implementation
     Handlebars.registerPartial('fetch/getHeaders', Handlebars.template(fetchGetHeaders));

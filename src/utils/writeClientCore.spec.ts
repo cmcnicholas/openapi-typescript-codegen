@@ -16,15 +16,14 @@ describe('writeClientCore', () => {
         };
 
         const templates: Templates = {
-            index: () => 'index',
             exports: {
                 model: () => 'model',
                 schema: () => 'schema',
-                service: () => 'service',
+                serviceImplementation: () => 'service-implementation',
+                serviceInterface: () => 'service-interface',
             },
             core: {
                 settings: () => 'settings',
-                apiError: () => 'apiError',
                 apiRequestOptions: () => 'apiRequestOptions',
                 apiResult: () => 'apiResult',
                 request: () => 'request',
@@ -34,7 +33,6 @@ describe('writeClientCore', () => {
         await writeClientCore(client, templates, '/', HttpClient.FETCH);
 
         expect(writeFile).toBeCalledWith('/OpenAPI.ts', 'settings');
-        expect(writeFile).toBeCalledWith('/ApiError.ts', 'apiError');
         expect(writeFile).toBeCalledWith('/ApiRequestOptions.ts', 'apiRequestOptions');
         expect(writeFile).toBeCalledWith('/ApiResult.ts', 'apiResult');
         expect(writeFile).toBeCalledWith('/request.ts', 'request');

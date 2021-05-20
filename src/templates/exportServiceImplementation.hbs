@@ -6,10 +6,10 @@
 import type { {{{this}}} } from '../models/{{{this}}}';
 {{/each}}
 {{/if}}
-import { {{{name}}} } from './{{{name}}}';
-import { ApiRequestOptions } from '../core/ApiRequestOptions';
+import type { {{{name}}} } from './{{{name}}}';
+import type { ApiRequestOptions } from '../core/ApiRequestOptions';
 import { request as __request } from '../core/request';
-import { ApiOptions } from '../core/ApiOptions';
+import type { ApiOptions } from '../core/ApiOptions';
 
 export class {{{name}}}Default implements {{{name}}} {
 

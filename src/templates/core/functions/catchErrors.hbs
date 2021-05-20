@@ -12,10 +12,10 @@ function catchErrors(options: ApiRequestOptions, result: ApiResult): void {
 
     const error = errors[result.status];
     if (error) {
-        throw new ApiError(result, error);
+        throw createError(error, options);
     }
 
     if (!result.ok) {
-        throw new ApiError(result, 'Generic Error');
+        throw createError('unhandled service error', options);
     }
 }

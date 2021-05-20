@@ -24,7 +24,6 @@ describe('writeClient', () => {
             },
             core: {
                 settings: () => 'settings',
-                apiError: () => 'apiError',
                 apiRequestOptions: () => 'apiRequestOptions',
                 apiResult: () => 'apiResult',
                 request: () => 'request',

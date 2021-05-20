@@ -1,0 +1,7 @@
+function createError(message: string, options: ApiRequestOptions): Error {
+    if (options.errorFactory) {
+        return options.errorFactory(message, options);
+    } else {
+        return new Error(message);
+    }
+}
