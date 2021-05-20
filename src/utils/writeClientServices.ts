@@ -6,7 +6,7 @@ import { writeFile } from './fileSystem';
 import { format } from './format';
 import { Templates } from './registerHandlebarTemplates';
 
-const VERSION_TEMPLATE_STRING = 'OpenAPI.VERSION';
+const VERSION_TEMPLATE_STRING = 'this.config.version';
 
 /**
  * Generate Services using the Handlebar template and write to disk.
@@ -20,6 +20,7 @@ const VERSION_TEMPLATE_STRING = 'OpenAPI.VERSION';
 export async function writeClientServices(services: Service[], templates: Templates, outputPath: string, httpClient: HttpClient, useUnionTypes: boolean, useOptions: boolean): Promise<void> {
     for (const service of services) {
         const file = resolve(outputPath, `${service.name}.ts`);
+
         const useVersion = service.operations.some(operation => operation.path.includes(VERSION_TEMPLATE_STRING));
         const templateResult = templates.exports.service({
             ...service,

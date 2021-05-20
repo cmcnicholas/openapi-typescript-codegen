@@ -7,17 +7,17 @@ import type { {{{this}}} } from '../models/{{{this}}}';
 {{/if}}
 import { ApiRequestOptions } from '../core/ApiRequestOptions';
 import { request as __request } from '../core/request';
-import { OpenAPI } from '../core/OpenAPI';
+import { ApiOptions } from '../core/ApiOptions';
 
 export class {{{name}}} {
 
-    private readonly config: OpenAPI;
+    private readonly config: ApiOptions;
 
     /**
      * creates a new service
      * @param config the configuration to use
      */
-    public constructor(config: OpenAPI) {
+    public constructor(config: ApiOptions) {
         this.config = config;
     }
 
@@ -76,7 +76,7 @@ export class {{{name}}} {
      */
     public {{{name}}}ApiRequestOptions({{>parameters}}): ApiRequestOptions {
         return {
-            baseUrl: this.config.BASE,
+            ...this.config,
             method: '{{{method}}}',
             path: `{{{path}}}`,
             {{#if parametersCookie}}

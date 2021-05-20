@@ -1,0 +1,13 @@
+{{>header}}
+
+import type { Resolver, Headers } from './ApiRequestOptions';
+
+export type ApiOptions = {
+    baseUrl: string;
+    version: string;
+    withCredentials: boolean;
+    token?: string | Resolver<string>;
+    username?: string | Resolver<string>;
+    password?: string | Resolver<string>;
+    defaultHeaders?: Headers | Resolver<Headers>;
+}

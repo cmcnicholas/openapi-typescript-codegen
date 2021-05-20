@@ -12,5 +12,5 @@ export function getOperationPath(path: string): string {
         .replace(/\{(.*?)\}/g, (_, w: string) => {
             return `\${${getOperationParameterName(w)}}`;
         })
-        .replace('${apiVersion}', '${OpenAPI.VERSION}');
+        .replace('${apiVersion}', '${this.config.version}');
 }

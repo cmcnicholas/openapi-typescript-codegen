@@ -1,7 +1,17 @@
 {{>header}}
 
+
+export type Resolver<T> = (options: ApiRequestOptions) => Promise<T>;
+export type Headers = Record<string, string>;
+
 export type ApiRequestOptions = {
     readonly baseUrl: string;
+    readonly withCredentials?: boolean;
+    readonly version: string;
+    readonly token?: string | Resolver<string>;
+    readonly username?: string | Resolver<string>;
+    readonly password?: string | Resolver<string>;
+    readonly defaultHeaders?: Headers | Resolver<Headers>;
     readonly method: 'GET' | 'PUT' | 'POST' | 'DELETE' | 'OPTIONS' | 'HEAD' | 'PATCH';
     readonly path: string;
     readonly cookies?: Record<string, any>;
