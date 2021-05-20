@@ -13,10 +13,13 @@ export type {{{name}}} = {
     {{>isReadOnly}}{{{name}}}{{>isRequired}}: {{>type parent=../name}};
     {{/each}}
 }
-{{#if enums}}
-{{#unless @root.useUnionTypes}}
 
 export namespace {{{name}}} {
+
+    /**
+     * the discriminator for the model if required for more complex api's
+     */
+    export const discriminator = '{{{name}}}';
 
     {{#each enums}}
     {{#if description}}
@@ -33,5 +36,3 @@ export namespace {{{name}}} {
     {{/each}}
 
 }
-{{/unless}}
-{{/if}}

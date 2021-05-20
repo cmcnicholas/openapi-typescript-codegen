@@ -8,10 +8,10 @@ describe('registerHandlebarTemplates', () => {
             useOptions: false,
             useUnionTypes: false,
         });
-        expect(templates.index).toBeDefined();
         expect(templates.exports.model).toBeDefined();
         expect(templates.exports.schema).toBeDefined();
-        expect(templates.exports.service).toBeDefined();
+        expect(templates.exports.serviceImplementation).toBeDefined();
+        expect(templates.exports.serviceInterface).toBeDefined();
         expect(templates.core.settings).toBeDefined();
         expect(templates.core.apiError).toBeDefined();
         expect(templates.core.apiRequestOptions).toBeDefined();

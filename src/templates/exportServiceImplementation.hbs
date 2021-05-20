@@ -1,15 +1,17 @@
 {{>header}}
 
+
 {{#if imports}}
 {{#each imports}}
 import type { {{{this}}} } from '../models/{{{this}}}';
 {{/each}}
 {{/if}}
+import { {{{name}}} } from './{{{name}}}';
 import { ApiRequestOptions } from '../core/ApiRequestOptions';
 import { request as __request } from '../core/request';
 import { ApiOptions } from '../core/ApiOptions';
 
-export class {{{name}}} {
+export class {{{name}}}Default implements {{{name}}} {
 
     private readonly config: ApiOptions;
 
@@ -22,28 +24,6 @@ export class {{{name}}} {
     }
 
     {{#each operations}}
-    /**
-    {{#if deprecated}}
-     * @deprecated
-    {{/if}}
-    {{#if summary}}
-     * {{{summary}}}
-    {{/if}}
-    {{#if description}}
-     * {{{description}}}
-    {{/if}}
-    {{#unless @root.useOptions}}
-    {{#if parameters}}
-    {{#each parameters}}
-     * @param {{{name}}} {{{description}}}
-    {{/each}}
-    {{/if}}
-    {{/unless}}
-    {{#each results}}
-     * @returns {{{type}}} {{{description}}}
-    {{/each}}
-     * @throws ApiError
-     */
     public async {{{name}}}({{>parameters}}): Promise<{{>result}}> {
         const options = this.{{{name}}}ApiRequestOptions(
             {{#each parameters}}{{{name}}},
@@ -53,27 +33,6 @@ export class {{{name}}} {
         return result.body;
     }
 
-    /**
-    {{#if deprecated}}
-     * @deprecated
-    {{/if}}
-     * **used to get the request options without making a http request**
-    {{#if summary}}
-     * {{{summary}}}
-    {{/if}}
-    {{#if description}}
-     * {{{description}}}
-    {{/if}}
-    {{#unless @root.useOptions}}
-    {{#if parameters}}
-    {{#each parameters}}
-     * @param {{{name}}} {{{description}}}
-    {{/each}}
-    {{/if}}
-    {{/unless}}
-     * @returns ApiRequestOptions the request options to fulfill a http request
-     * @throws ApiError
-     */
     public {{{name}}}ApiRequestOptions({{>parameters}}): ApiRequestOptions {
         return {
             ...this.config,

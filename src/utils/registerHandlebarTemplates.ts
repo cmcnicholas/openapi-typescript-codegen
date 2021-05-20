@@ -37,8 +37,8 @@ import xhrRequest from '../templates/core/xhr/request.hbs';
 import xhrSendRequest from '../templates/core/xhr/sendRequest.hbs';
 import templateExportModel from '../templates/exportModel.hbs';
 import templateExportSchema from '../templates/exportSchema.hbs';
-import templateExportService from '../templates/exportService.hbs';
-import templateIndex from '../templates/index.hbs';
+import templateExportServiceImplementation from '../templates/exportServiceImplementation.hbs';
+import templateExportServiceInterface from '../templates/exportServiceInterface.hbs';
 import partialBase from '../templates/partials/base.hbs';
 import partialExportComposition from '../templates/partials/exportComposition.hbs';
 import partialExportEnum from '../templates/partials/exportEnum.hbs';
@@ -69,11 +69,11 @@ import partialTypeUnion from '../templates/partials/typeUnion.hbs';
 import { registerHandlebarHelpers } from './registerHandlebarHelpers';
 
 export interface Templates {
-    index: Handlebars.TemplateDelegate;
     exports: {
         model: Handlebars.TemplateDelegate;
         schema: Handlebars.TemplateDelegate;
-        service: Handlebars.TemplateDelegate;
+        serviceInterface: Handlebars.TemplateDelegate;
+        serviceImplementation: Handlebars.TemplateDelegate;
     };
     core: {
         settings: Handlebars.TemplateDelegate;
@@ -93,11 +93,11 @@ export function registerHandlebarTemplates(root: { httpClient: HttpClient; useOp
 
     // Main templates (entry points for the files we write to disk)
     const templates: Templates = {
-        index: Handlebars.template(templateIndex),
         exports: {
             model: Handlebars.template(templateExportModel),
             schema: Handlebars.template(templateExportSchema),
-            service: Handlebars.template(templateExportService),
+            serviceImplementation: Handlebars.template(templateExportServiceImplementation),
+            serviceInterface: Handlebars.template(templateExportServiceInterface),
         },
         core: {
             settings: Handlebars.template(templateCoreSettings),

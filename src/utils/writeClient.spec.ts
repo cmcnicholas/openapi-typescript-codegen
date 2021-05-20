@@ -16,11 +16,11 @@ describe('writeClient', () => {
         };
 
         const templates: Templates = {
-            index: () => 'index',
             exports: {
                 model: () => 'model',
                 schema: () => 'schema',
-                service: () => 'service',
+                serviceImplementation: () => 'service implementation',
+                serviceInterface: () => 'service interface',
             },
             core: {
                 settings: () => 'settings',
