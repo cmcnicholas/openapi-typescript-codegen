@@ -31,7 +31,6 @@ export interface {{{name}}} {
     {{#each results}}
      * @returns {{{type}}} {{{description}}}
     {{/each}}
-     * @throws ApiError
      */
     {{{name}}}({{>parameters}}): Promise<{{>result}}>;
 
@@ -54,7 +53,6 @@ export interface {{{name}}} {
     {{/if}}
     {{/unless}}
      * @returns ApiRequestOptions the request options to fulfill a http request
-     * @throws ApiError
      */
     {{{name}}}ApiRequestOptions({{>parameters}}): ApiRequestOptions;
 

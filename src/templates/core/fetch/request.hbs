@@ -49,10 +49,9 @@ import type { ApiResult } from './ApiResult';
 
 
 /**
- * Request using fetch client
+ * request using fetch client
  * @param options The request options from the the service
  * @returns ApiResult
- * @throws ApiError
  */
 export async function request(options: ApiRequestOptions): Promise<ApiResult> {
     const url = getUrl(options);
