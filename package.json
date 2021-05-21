@@ -1,15 +1,15 @@
 {
-    "name": "openapi-typescript-codegen",
-    "version": "0.9.3",
+    "name": "@cmcnicholas/openapi-typescript-codegen",
+    "version": "0.0.0",
     "description": "Library that generates Typescript clients based on the OpenAPI specification.",
     "author": "Ferdi Koomen",
-    "homepage": "https://github.com/ferdikoomen/openapi-typescript-codegen",
+    "homepage": "https://github.com/cmcnicholas/openapi-typescript-codegen",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ferdikoomen/openapi-typescript-codegen.git"
+        "url": "git+https://github.com/cmcnicholas/openapi-typescript-codegen.git"
     },
     "bugs": {
-        "url": "https://github.com/ferdikoomen/openapi-typescript-codegen/issues"
+        "url": "https://github.com/cmcnicholas/openapi-typescript-codegen/issues"
     },
     "license": "MIT",
     "keywords": [
@@ -27,8 +27,8 @@
     ],
     "maintainers": [
         {
-            "name": "Ferdi Koomen",
-            "email": "info@madebyferdi.com"
+            "name": "Craig McNicholas",
+            "email": "craig.mcnicholas@weareyotta.com"
         }
     ],
     "main": "dist/index.js",
