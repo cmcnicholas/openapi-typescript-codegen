@@ -1,6 +1,6 @@
 {
     "name": "@yottaltd/openapi-typescript-codegen",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Library that generates Typescript clients based on the OpenAPI specification.",
     "author": "Ferdi Koomen",
     "homepage": "https://github.com/yottaltd/openapi-typescript-codegen",
