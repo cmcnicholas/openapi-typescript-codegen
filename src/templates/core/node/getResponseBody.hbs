@@ -1,16 +1,20 @@
-async function getResponseBody(response: Response): Promise<any> {
-    try {
-        const contentType = response.headers.get('Content-Type');
-        if (contentType) {
-            const isJSON = contentType.toLowerCase().startsWith('application/json');
-            if (isJSON) {
+async function getResponseBody(options: ApiRequestOptions, response: Response): Promise<any> {
+    const contentType = response.headers.get('Content-Type');
+    if (contentType) {
+        const isJSON = contentType.toLowerCase().startsWith('application/json');
+        if (isJSON) {
+            try {
                 return await response.json();
-            } else {
+            } catch (e) {
+                throw createError('failed to parse JSON response: ' + e, options);
+            }
+        } else {
+            try {
                 return await response.text();
+            } catch (e) {
+                throw createError('failed to parse text response: ' + e, options);
             }
         }
-    } catch (error) {
-        console.error(error);
     }
     return null;
 }

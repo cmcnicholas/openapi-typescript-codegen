@@ -4,5 +4,10 @@ async function sendRequest(options: ApiRequestOptions, url: string): Promise<Res
         headers: await getHeaders(options),
         body: getRequestBody(options),
     };
-    return await fetch(url, request);
+
+    try {
+        return await fetch(url, request);
+    } catch(e) {
+        throw createError('failed to fetch: ' + e, options);
+    }
 }

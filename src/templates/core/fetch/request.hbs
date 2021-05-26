@@ -56,7 +56,7 @@ import type { ApiResult } from './ApiResult';
 export async function request(options: ApiRequestOptions): Promise<ApiResult> {
     const url = getUrl(options);
     const response = await sendRequest(options, url);
-    const responseBody = await (options.getResponseBody ?? getResponseBody)(options, response);
+    const responseBody = await getResponseBody(options, response);
     const responseHeader = getResponseHeader(response, options.responseHeader);
 
     const result: ApiResult = {
