@@ -34,7 +34,7 @@ async function generateV3() {
 
 async function generateAlloyMesh() {
     await OpenAPI.generate({
-        input: 'https://betamesh.labs.alloyapp.io/openapi.json',
+        input: 'https://mesh.labs.alloyapp.io/openapi.json',
         output: './test/generated/alloy-mesh/',
         httpClient: OpenAPI.HttpClient.FETCH,
         useOptions: false,

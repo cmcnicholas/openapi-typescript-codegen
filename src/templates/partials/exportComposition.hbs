@@ -4,11 +4,15 @@
  */
 {{/if}}
 export type {{{name}}} = {{>type parent=name}};
-{{#if enums}}
-{{#unless @root.useUnionTypes}}
 
 export namespace {{{name}}} {
 
+    /**
+     * the discriminator for the model if required for more complex api's
+     */
+    export const discriminator = '{{{name}}}';
+
+    {{#unless @root.useUnionTypes}}
     {{#each enums}}
     {{#if description}}
     /**
@@ -22,7 +26,6 @@ export namespace {{{name}}} {
     }
 
     {{/each}}
+    {{/unless}}
 
 }
-{{/unless}}
-{{/if}}
