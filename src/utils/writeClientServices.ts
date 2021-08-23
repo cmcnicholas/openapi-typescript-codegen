@@ -29,6 +29,7 @@ export async function writeClientServices(services: Service[], templates: Templa
             useUnionTypes,
             useVersion,
             useOptions,
+            serviceImplementation: true,
         });
         await writeFile(fileImplementation, format(templateResultImplementation));
 

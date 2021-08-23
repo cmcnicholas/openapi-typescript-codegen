@@ -15,7 +15,7 @@
 {{~else}}
 
 {{#each parameters}}
-{{{name}}}{{>isRequired}}: {{>type}}{{#if default}} = {{{default}}}{{/if}},
+{{{name}}}{{>isRequired}}: {{>type}}{{#if @root.serviceImplementation}}{{#if default}} = {{{default}}}{{/if}}{{/if}},
 {{/each}}
 {{/if}}
 {{/if}}
