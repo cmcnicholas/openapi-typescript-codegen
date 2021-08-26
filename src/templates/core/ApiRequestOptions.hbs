@@ -67,7 +67,7 @@ export type ApiRequestOptions = {
      * optionally post process the response to catch any specific errors, this can be useful if a more complex
      * error handling approach is used on the api e.g. json responses representing an error
      */
-    catchErrors?: (options: ApiRequestOptions, result: ApiResult) => void;
+    catchErrors?: (options: ApiRequestOptions, result: ApiResult) => void | (Promise<void>);
 
     /**
      * the http method to use

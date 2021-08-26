@@ -71,6 +71,6 @@ export async function request(options: ApiRequestOptions): Promise<ApiResult> {
         body: responseHeader || responseBody,
     };
 
-    (options.catchErrors ?? catchErrors)(options, result);
+    await (options.catchErrors ?? catchErrors)(options, result);
     return result;
 }
