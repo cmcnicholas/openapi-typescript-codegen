@@ -19,9 +19,8 @@ export function getEnum(values?: (string | number)[]): Enum[] {
                 }
                 return {
                     name: String(value)
-                        .replace(/\W+/g, '_')
-                        .replace(/^(\d+)/g, '_$1')
-                        .replace(/([a-z])([A-Z]+)/g, '$1_$2'),
+                        .replace(/\W+/g, '')
+                        .replace(/^(\d+)/g, '_$1'),
                     value: `'${value}'`,
                     type: 'string',
                     description: null,
