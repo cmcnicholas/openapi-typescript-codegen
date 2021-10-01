@@ -1,4 +1,14 @@
 async function sendRequest(options: ApiRequestOptions, url: string): Promise<Response> {
+    const request: RequestInit = await sendRequestOptions(options);
+
+    try {
+        return await fetch(url, request);
+    } catch(e) {
+        throw createError('failed to fetch: ' + e, options);
+    }
+}
+
+export async function sendRequestOptions(options: ApiRequestOptions): Promise<RequestInit> {
     const request: RequestInit = {
         method: options.method,
         headers: await getHeaders(options),
@@ -8,9 +18,5 @@ async function sendRequest(options: ApiRequestOptions, url: string): Promise<Res
         request.credentials = 'include';
     }
 
-    try {
-        return await fetch(url, request);
-    } catch(e) {
-        throw createError('failed to fetch: ' + e, options);
-    }
+    return request;
 }
