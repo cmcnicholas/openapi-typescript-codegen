@@ -26,8 +26,12 @@ export class {{{name}}}Default implements {{{name}}} {
     {{#each operations}}
     public async {{{name}}}({{>parameters}}): Promise<{{>result}}> {
         const options = this.{{{name}}}ApiRequestOptions(
+        {{#if parameters.[0]}}
+        {
             {{#each parameters}}{{{name}}},
             {{/each}}
+        }
+        {{/if}}
         );
         const result = await __request(options);
         return result.body;
