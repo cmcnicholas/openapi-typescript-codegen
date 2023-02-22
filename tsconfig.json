@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "target": "es2017",
-        "module": "es6",
+        "target": "es2019",
+        "module": "commonjs",
         "moduleResolution": "node",
-        "lib": ["es6", "es2017", "dom"],
+        "lib": ["es2019", "dom"],
         "types": ["jest", "node"],
         "declaration": false,
         "declarationMap": false,
@@ -13,17 +13,13 @@
         "noImplicitThis": true,
         "noImplicitAny": true,
         "strict": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
+        "skipLibCheck": true,
         "allowSyntheticDefaultImports": true,
-        "skipLibCheck": true
+        "experimentalDecorators": true
     },
 
     "files": [
-        "./src/typings/hbs.d.ts",
-        "./src/typings/camelcase.d.ts",
-        "./src/typings/mkdirp.d.ts",
-        "./src/typings/rimraf.d.ts"
+        "./src/typings/hbs.d.ts"
     ],
 
     "include": [
@@ -31,7 +27,7 @@
     ],
 
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/__mocks__"
     ]
 }
-

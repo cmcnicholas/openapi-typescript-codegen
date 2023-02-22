@@ -1,6 +1,6 @@
 'use strict';
 
-const OpenAPI = require('../dist');
+const OpenAPI = require('../');
 
 async function generateV2() {
     await OpenAPI.generate({
@@ -19,7 +19,7 @@ async function generateV2() {
 
 async function generateV3() {
     await OpenAPI.generate({
-        input: './test/spec/v3.json',
+        input: 'https://api.labs.alloyapp.io/openapi.json',
         output: './test/generated/v3/',
         httpClient: OpenAPI.HttpClient.FETCH,
         useOptions: false,
