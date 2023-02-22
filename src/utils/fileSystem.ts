@@ -13,13 +13,4 @@ export const exists = promisify(__exists);
 export const mkdir = mkdirp;
 
 // Promisified version of rimraf
-export const rmdir = (path: string): Promise<void> =>
-    new Promise((resolve, reject) => {
-        rimraf(path, (error: Error) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve();
-            }
-        });
-    });
+export const rmdir = async (path: string): Promise<void> => await rimraf(path);
