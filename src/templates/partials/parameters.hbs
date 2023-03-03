@@ -2,7 +2,7 @@
 {{#if @root.useOptions~}}
 {
 {{#each parameters}}
-{{{name}}}{{#if default}} = {{{default}}}{{/if}},
+{{{name}}}{{#if @root.serviceImplementation}}{{#if default}} = {{{default}}}{{/if}}{{/if}},
 {{/each}}
 }: {
 {{#each parameters}}
