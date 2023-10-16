@@ -1,6 +1,6 @@
 import { copyFile as __copyFile, exists as __exists, readFile as __readFile, writeFile as __writeFile } from 'fs';
 import mkdirp from 'mkdirp';
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import { promisify } from 'util';
 
 // Wrapped file system calls
@@ -13,4 +13,6 @@ export const exists = promisify(__exists);
 export const mkdir = mkdirp;
 
 // Promisified version of rimraf
-export const rmdir = async (path: string): Promise<void> => await rimraf(path);
+export const rmdir = async (path: string): Promise<void> => {
+    await rimraf(path);
+};
